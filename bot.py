@@ -39,4 +39,7 @@ async def bot_main():
             print(traceback.format_exc(), flush=True)
 
 
-asyncio.run(bot_main())
+run = lambda: asyncio.run(bot_main())
+
+if __name__ == '__main__':
+    run()
