@@ -19,7 +19,7 @@ def keep_alive():
 
 if __name__ == '__main__':
     from threading import Thread
-    Thread(target=app.run).start()
+    Thread(target=lambda: app.run('0.0.0.0')).start()
     Thread(target=keep_alive).start()
     import bot
 
