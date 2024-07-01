@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return f'Server is UP v1.3 <br> Last signal sent {int(time.time() - bot.glt())}sec ago'
+    return f'Server is UP v1.4 <br> Last signal sent {int(time.time() - bot.glt())}sec ago'
 
 def keep_alive():
     while 1:
