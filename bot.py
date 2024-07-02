@@ -3,7 +3,7 @@ from telegram import Bot, InlineKeyboardButton, InlineKeyboardMarkup
 import asyncio, random, time, traceback, sys
 
 TOKEN : Final[str] = '7467645069:AAE5NexNiCIIAxRVZ7xsHhq_JzHFh4jG_Uc'
-ID: Final[str] = '@test28372ndb'
+ID: Final[str] = '@AvaitorGreenSignalsbyReDHaT'
 BOT : Final[Bot] = Bot(TOKEN)
 c = [0]
 glt = lambda: c[0]
