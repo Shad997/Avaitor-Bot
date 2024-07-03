@@ -1,14 +1,17 @@
-from flask import Flask
+import time, traceback, asyncio
+from threading import Thread
 from requests import get
-import time, traceback
+from flask import Flask
 
-class bot: 
-    def glt(): return 0
+class bot: glt = lambda: 0
+class bot2(bot): pass
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return f'Server is UP v1.4 <br> Last signal sent {int(time.time() - bot.glt())}sec ago'
+    bot_time = int(time.time() - bot.glt())
+    bot2_time = int(time.time() - bot2.glt())
+    return f'Server is UP v1.6 <br> Last avaitor signal sent {bot_time}sec ago <br> Last mines signal send {bot2_time}sec ago'
 
 def keep_alive():
     while 1:
@@ -19,10 +22,13 @@ def keep_alive():
 
 
 if __name__ == '__main__':
-    from threading import Thread
     Thread(target=lambda: app.run('0.0.0.0')).start()
     Thread(target=keep_alive).start()
-    import bot
-    bot.run()
+    import bot, bot2
+    async def run_bots():
+        for task in asyncio.as_completed([bot.bot_main(), bot2.bot_main()]):
+            await task
+    asyncio.run(run_bots())
+    
 
 
