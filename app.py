@@ -5,13 +5,15 @@ from flask import Flask
 
 class bot: glt = lambda: 0
 class bot2(bot): pass
+class ads(bot): pass
 app = Flask(__name__)
 
 @app.route('/')
 def index():
     bot_time = int(time.time() - bot.glt())
     bot2_time = int(time.time() - bot2.glt())
-    return f'Server is UP v1.6 <br> Last avaitor signal sent {bot_time}sec ago <br> Last mines signal send {bot2_time}sec ago'
+    ads_time = int(time.time() - ads.glt())
+    return f'Server is UP v1.8 <br> Last avaitor signal sent {bot_time}sec ago <br> Last mines signal sent {bot2_time}sec ago <br> Last ads sent {ads_time}sec ago'
 
 def keep_alive():
     while 1:
