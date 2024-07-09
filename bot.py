@@ -1,5 +1,4 @@
-from config import BOT
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+from config import BOT, single_button
 import asyncio, random, time, traceback, sys
 
 
@@ -7,11 +6,6 @@ ID = '@AvaitorGreenSignalsbyReDHaT'
 c = [0]
 glt = lambda: c[0]
 
-
-def single_button(text, url):
-    button = InlineKeyboardButton(text, url)
-    keyboard = InlineKeyboardMarkup([[button]])
-    return keyboard
 
 async def send_signal():
     c[0] = time.time()

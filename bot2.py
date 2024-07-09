@@ -1,5 +1,4 @@
-from config import BOT
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+from config import BOT, single_button
 import asyncio, random, time, traceback, sys
 
 
@@ -14,10 +13,6 @@ def get_box(stars : int = 4):
     for t in range(5): bxi.insert(5 * (t + 1) + t, '\n')
     return ''.join(bxi)[:-1]
 
-def single_button(text, url):
-    button = InlineKeyboardButton(text, url)
-    keyboard = InlineKeyboardMarkup([[button]])
-    return keyboard
 
 async def send_signal():
     c[0] = time.time()

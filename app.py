@@ -24,9 +24,9 @@ def keep_alive():
 if __name__ == '__main__':
     Thread(target=lambda: app.run('0.0.0.0')).start()
     Thread(target=keep_alive).start()
-    import bot, bot2
+    import bot, bot2, ads
     async def run_bots():
-        for task in asyncio.as_completed([bot.bot_main(), bot2.bot_main()]):
+        for task in asyncio.as_completed([bot.bot_main(), bot2.bot_main(), ads.ads_main()]):
             await task
     asyncio.run(run_bots())
     
