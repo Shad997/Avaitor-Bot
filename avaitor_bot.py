@@ -2,7 +2,7 @@ from config import BOT, single_button, send_session_start, send_session_close
 import asyncio, random, time, traceback, sys
 
 
-ID = '@luckyJETHacksignals404'
+ID = '@Avaitor_Hack_bot404'
 
 status = 'Stopped'
 allow_run = False
