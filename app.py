@@ -5,7 +5,7 @@ from requests import get
 
 
 app = Flask(__name__)
-__version__ = 2.3
+__version__ = 2.5
 
 class base:
     status = 'Stopped'
