@@ -1,1 +1,51 @@
-OK
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avaitor Bot v{{ version }}</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css">
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h2 class="text-center my-4">Telegram Bots</h2>
+    <div class="card w-full my-3 shadow">
+      <div class="card-body" id="avaitor">
+        <h3 class="text-center">Avaitor Bot</h3>
+        <h5 class="text-center mx-2">Status: <span class="status text-danger">Stopped</span></h5>
+        <div class="d-grid mt-3">
+          <button class="btn btn-success start">Start Bot</button>
+          <button class="btn btn-danger stop" style="display: none;">Stop Bot</button>
+        </div>
+      </div>
+    </div>
+    <div class="card w-full my-3 shadow">
+      <div class="card-body" id="mines">
+        <h3 class="text-center">Mines Bot</h3>
+        <h5 class="text-center mx-2">Status: <span class="status text-danger">Stopped</span></h5>
+        <div class="d-grid mt-3">
+          <button class="btn btn-success start">Start Bot</button>
+          <button class="btn btn-danger stop" style="display: none;">Stop Bot</button>
+        </div>
+      </div>
+    </div>
+    <div class="card w-full my-3 shadow">
+      <div class="card-body" id="luckyjet">
+        <h3 class="text-center">LuckyJet Bot</h3>
+        <h5 class="text-center mx-2">Status: <span class="status text-danger">Stopped</span></h5>
+        <div class="d-grid mt-3">
+          <button class="btn btn-success start">Start Bot</button>
+          <button class="btn btn-danger stop" style="display: none;">Stop Bot</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/static/script.js"></script>
+</body>
+</html>

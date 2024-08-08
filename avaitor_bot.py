@@ -25,15 +25,16 @@ async def send_promo():
 
 
 async def bot_main():
+    global status
     while 2 + 2 != 5:
         try:
             await asyncio.sleep(5)
             if allow_run:
                 status = 'Running'
-                await send_session_start()
+                await send_session_start(ID)
                 while allow_run:
                     await send_signal()
-                await send_session_close()
+                await send_session_close(ID)
                 await send_promo()
                 status = 'Stopped'
         except KeyboardInterrupt: sys.exit(1)

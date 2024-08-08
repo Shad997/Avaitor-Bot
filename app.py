@@ -1,14 +1,30 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, request, render_template, jsonify
 import time, traceback, asyncio
 from threading import Thread
 from requests import get
 
 
 app = Flask(__name__)
+__version__ = 2.3
 
-@app.route('/')
+class base:
+    status = 'Stopped'
+    allow_run = False
+
+class avaitor_bot(base): pass
+class mines_bot(base): pass
+class luckyjet_bot(base): pass
+
+
+@app.route('/', methods=['GET', 'POST', 'PATCH'])
 def index():
-    return render_template('index.html')
+    if request.method == 'PATCH': return jsonify(dict(avaitor=avaitor_bot.status, mines=mines_bot.status, luckyjet=luckyjet_bot.status))
+    if request.method == 'POST':
+        bname = request.form.get('bot')
+        run = request.form.get('run', 0, int)
+        eval(bname + '_bot').allow_run = bool(run)
+        return jsonify(dict(success=True, msg='Success! But it may take some time to complete the operation'))
+    return render_template('index.html', version=__version__)
 
 def keep_alive():
     while 1:

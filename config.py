@@ -12,9 +12,9 @@ def single_button(text, url):
     return keyboard
 
 async def send_session_start(chat_id):
-    await BOT.send_photo(chat_id, 'static/session_starts.webp')
+    await BOT.send_sticker(chat_id, 'static/session_starts.webp')
 
 async def send_session_close(chat_id):
-    await BOT.send_photo(chat_id, 'static/session_closed.webp')
+    await BOT.send_sticker(chat_id, 'static/session_closed.webp')
 
 
