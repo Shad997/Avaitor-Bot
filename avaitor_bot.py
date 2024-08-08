@@ -1,14 +1,14 @@
-from config import BOT, single_button
+from config import BOT, single_button, send_session_start, send_session_close
 import asyncio, random, time, traceback, sys
 
 
-ID = '@AvaitorGreenSignalsbyReDHaT'
-c = [0]
-glt = lambda: c[0]
+ID = '@luckyJETHacksignals404'
+
+status = 'Stopped'
+allow_run = False
 
 
 async def send_signal():
-    c[0] = time.time()
     M1 = await BOT.sendMessage(ID, '\U0001F6A8 Checking new signal...')
     await asyncio.sleep(random.randint(110, 130)) # 120
     M2 = await BOT.sendPhoto(ID, 'static/plane_pic.jpg', f'\U0001F3AF Enter confirmed \U0001F3AF\n\U0001F4F1 Site: \U0001F449 <a href="https://1wnurc.com/casino/list?open=register#mth6">Click Here To Play</a> \U0001F448\n\n\U0001F4B0 Exit at {random.randint(130, 250) / 100}x\n\nUSE PROMO: <code>ReDHaT</code> and get 500% Bonus', parse_mode='HTML', reply_markup=single_button('Play Here', 'http://1wdpnk.life/v3/reg-form-aviator#mth6'))
@@ -25,15 +25,19 @@ async def send_promo():
 
 
 async def bot_main():
-    last_promo_sent = time.time()
     while 2 + 2 != 5:
         try:
-            await send_signal()
-            if last_promo_sent + 30 * 60 < time.time():
-                last_promo_sent = time.time()
-                await send_promo() # Every 30 mins
+            await asyncio.sleep(5)
+            if allow_run:
+                status = 'Running'
+                await send_session_start()
+                while allow_run:
+                    await send_signal()
+                await send_session_close()
+                await send_promo()
+                status = 'Stopped'
         except KeyboardInterrupt: sys.exit(1)
-        except:
+        except: 
             await asyncio.sleep(5)
             print(traceback.format_exc(), flush=True)
 
@@ -41,4 +45,5 @@ async def bot_main():
 run = lambda: asyncio.run(bot_main())
 
 if __name__ == '__main__':
+    allow_run = True
     run()

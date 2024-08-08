@@ -10,3 +10,11 @@ def single_button(text, url):
     button = InlineKeyboardButton(text, url)
     keyboard = InlineKeyboardMarkup([[button]])
     return keyboard
+
+async def send_session_start(chat_id):
+    await BOT.send_photo(chat_id, 'static/session_starts.webp')
+
+async def send_session_close(chat_id):
+    await BOT.send_photo(chat_id, 'static/session_closed.webp')
+
+

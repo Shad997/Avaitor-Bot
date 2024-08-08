@@ -1,10 +1,11 @@
-from config import BOT, single_button
+from config import BOT, single_button, send_session_start, send_session_close
 import asyncio, random, time, traceback, sys
 
 
 ID = '@MinesvipsignalsbyReDHaT'
-c = [0]
-glt = lambda: c[0]
+
+status = 'Stopped'
+allow_run = False
 
 
 def get_box(stars : int = 4):
@@ -15,7 +16,6 @@ def get_box(stars : int = 4):
 
 
 async def send_signal():
-    c[0] = time.time()
     M1 = await BOT.sendMessage(ID, '\U0001F6A8 Checking new signal...')
     await asyncio.sleep(random.randint(110, 130)) # 120
     M2 = await BOT.sendMessage(ID, '\u2705 CONFIRMED ENTRY!\n\nAttempts: 4\n\n\U0001F449 <a href="https://1wzlcz.life/casino/play/1play_1play_mines">Play Here!</a>\n\n' + get_box() + '\n\n\u2705 Tutorial\n\U0001F451 <a href="https://1wnurc.com/casino/list?open=register#mth6">Mines VIP</a>\nPromoCode: <code>ReDHaT</code> use this promo code and get 500% bonus', parse_mode='HTML', reply_markup=single_button('Play Here', 'https://1wzlcz.life/casino/play/1play_1play_mines'), disable_web_page_preview=True)
@@ -32,15 +32,19 @@ async def send_promo():
 
 
 async def bot_main():
-    last_promo_sent = time.time()
     while 2 + 2 != 5:
         try:
-            await send_signal()
-            if last_promo_sent + 30 * 60 < time.time():
-                last_promo_sent = time.time()
-                await send_promo() # Every 30 mins
+            await asyncio.sleep(5)
+            if allow_run:
+                status = 'Running'
+                await send_session_start()
+                while allow_run:
+                    await send_signal()
+                await send_session_close()
+                await send_promo()
+                status = 'Stopped'
         except KeyboardInterrupt: sys.exit(1)
-        except:
+        except: 
             await asyncio.sleep(5)
             print(traceback.format_exc(), flush=True)
 
@@ -48,4 +52,5 @@ async def bot_main():
 run = lambda: asyncio.run(bot_main())
 
 if __name__ == '__main__':
+    allow_run = True
     run()
