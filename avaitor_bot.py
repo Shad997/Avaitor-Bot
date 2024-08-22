@@ -1,5 +1,5 @@
 from config import BOT, single_button, send_session_start, send_session_close
-import asyncio, random, time, traceback, sys
+import asyncio, random, time, traceback, sys, ads
 
 
 ID = '@Avaitor_Hack_bot404'
@@ -36,6 +36,7 @@ async def bot_main():
                     await send_signal()
                 await send_session_close(ID)
                 await send_promo()
+                await ads.send_ads(ID)
                 status = 'Stopped'
         except KeyboardInterrupt: sys.exit(1)
         except: 
