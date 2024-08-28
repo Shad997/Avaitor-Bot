@@ -32,11 +32,11 @@ async def bot_main():
             if allow_run:
                 status = 'Running'
                 await send_session_start(ID)
+                await ads.send_ads(ID)
                 while allow_run:
                     await send_signal()
                 await send_session_close(ID)
                 await send_promo()
-                await ads.send_ads(ID)
                 status = 'Stopped'
         except KeyboardInterrupt: sys.exit(1)
         except: 
